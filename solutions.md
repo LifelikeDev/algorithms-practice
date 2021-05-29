@@ -149,3 +149,107 @@ const next = arr[i + 1];
 return null;
 
 }
+
+### Challenge 6
+
+Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (like the name of this kata).
+
+Strings passed in will consist of only letters and spaces.
+Spaces will be included only when more than one word is present.
+
+### Solution
+
+function spinWords(string){
+
+return string
+.split(" ")
+.map(str => str.length > 4 ? str.split("").reverse().join("") : str)
+.join(" ");
+
+}
+
+### Challenge 7
+
+Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+
+Rules for a smiling face:
+
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned.
+
+Valid smiley face examples: :) :D ;-D :~)
+Invalid smiley faces: ;( :> :} :]
+
+### Solution
+
+function countSmileys(arr) {
+
+const smileyReg = /[:;][-~]?[D)]/g;
+let total = 0;
+
+for (let i=0; i < arr.length; i++) {
+if (arr[i].match(smileyReg)) {
+total++;
+}
+}
+
+return total;
+
+}
+
+### Challenge 8
+
+Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+
+### Solution
+
+function solution(str, ending){
+return ending === "" ? true : str.slice(-ending.length) === ending;
+}
+
+### OR
+
+function solution(str, ending){
+return str.endsWith(ending);
+}
+
+### Challenge 9
+
+Given a list of integers, determine whether the sum of its elements is odd or even.
+
+Give your answer as a string matching "odd" or "even".
+
+If the input array is empty consider it as: [0] (array with a zero).
+
+Examples:
+Input: [0]
+Output: "even"
+
+Input: [0, 1, 4]
+Output: "odd"
+
+Input: [0, -1, -5]
+Output: "even"
+
+### Solution
+
+function oddOrEven(array) {
+const newArr = array.length > 1 ? array.reduce((acc, curr) => acc += curr) : array.length === 1 ? array[0] : 0;
+
+return newArr % 2 === 0 ? "even" : "odd";
+}
+
+### Challenge 10
+
+Write a function called repeatStr which repeats the given string string exactly n times.
+
+repeatStr(6, "I") // "IIIIII"
+repeatStr(5, "Hello") // "HelloHelloHelloHelloHello"
+
+### Solution
+
+function repeatStr (n, s) {
+return s.repeat(n);
+}
