@@ -253,3 +253,111 @@ repeatStr(5, "Hello") // "HelloHelloHelloHelloHello"
 function repeatStr (n, s) {
 return s.repeat(n);
 }
+
+### Challenge 11
+
+Your goal is to return multiplication table for number that is always an integer from 1 to 10.
+
+For example, a multiplication table (string) for number == 5 looks like below:
+
+1 _ 5 = 5
+2 _ 5 = 10
+3 _ 5 = 15
+4 _ 5 = 20
+5 _ 5 = 25
+6 _ 5 = 30
+7 _ 5 = 35
+8 _ 5 = 40
+9 _ 5 = 45
+10 _ 5 = 50
+P. S. You can use \n in string to jump to the next line.
+
+Note: newlines should be added between rows, but there should be no trailing newline at the end.
+
+### Solution
+
+function multiTable(number) {
+
+let multiplicationTable = "";
+
+for ( let i = 1; i < 11; i++ ) {
+let singleRow = "";
+singleRow = i < 10 ? `${i} * ${number} = ${i * number}\n` : `${i} * ${number} = ${i * number}`
+multiplicationTable += singleRow;
+}
+
+return multiplicationTable;
+
+}
+
+### Challenge 12
+
+Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n (inclusive).
+
+Examples
+n = 0 ==> [1] # [2^0]
+n = 1 ==> [1, 2] # [2^0, 2^1]
+n = 2 ==> [1, 2, 4] # [2^0, 2^1, 2^2]
+
+### Solution
+
+function powersOfTwo(n){
+let array = [];
+
+for ( let i = 0; i <= n; i++ ) {
+array.push(Math.pow(2, i));
+}
+
+return array;
+}
+
+### Challenge 13
+
+In English, all words at the begining of a sentence should begin with a capital letter.
+
+You will be given a paragraph that does not use capital letters. Your job is to capitalise the first letter of the first word of each sentence.
+
+For example,
+
+input:
+
+"hello. my name is inigo montoya. you killed my father. prepare to die."
+
+output:
+
+"Hello. My name is inigo montoya. You killed my father. Prepare to die."
+
+You may assume:
+
+there will be no punctuation besides full stops and spaces
+all but the last full stop will be followed by a space and at least one word
+
+### Solution
+
+function fix(paragraph){
+
+const capPara = paragraph
+.split(". ").map(para => para.charAt(0).toUpperCase() + para.substring(1))
+.join(". ");
+
+return capPara;
+}
+
+### Challenge 14
+
+Order People by age Using Arrow Function
+Sort and Order people by their age using Arrow Functions
+Task
+Your task is to order a list containg people objects by age using the new Javascript Arrow Functions
+Input
+Input will be a valid array with People objects containing an Age and Name
+Output
+Output will be a valid sorted array with People objects sorted by Age in ascending order
+
+### Solution
+
+const OrderPeople = (people) => people.sort((a, b) => a.age - b.age);
+
+### Challenge 15
+
+### Solution
