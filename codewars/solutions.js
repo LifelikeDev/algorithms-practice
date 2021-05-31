@@ -347,4 +347,67 @@ const OrderPeople = (people) => people.sort((a, b) => a.age - b.age);
 
 // ### -------------------- Challenge 15 --------------------
 
+// Given a sequence of integers, return the sum of all the integers that have an even index, multiplied by the integer at the last index.
+
+// Indices in sequence start from 0.
+
+// If the sequence is empty, you should return 0.
+
+// ### Solution
+
+function evenLast(numbers) {
+  if (numbers.length === 0) return 0;
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i += 2) {
+    sum += numbers[i];
+  }
+  return sum * numbers[numbers.length - 1];
+}
+
+// ### -------------------- Challenge 16 --------------------
+
+// Given the string representations of two integers, return the string representation of the sum of those integers.
+
+// For example:
+
+// sumStrings('1','2') // => '3'
+// A string representation of an integer will contain no characters besides the ten numerals "0" to "9".
+
+// ### Solution
+
+function sumStrings(a, b) {
+  return BigInt(a) + BigInt(b) + "";
+}
+
+// ### -------------------- Challenge 17 --------------------
+// i is the imaginary unit, it is defined by i² = -1, therefore it is a solution to x²+1=0.
+
+// Your Task
+// is to write a function pofi that returns i to the power of a given non-negative integer in its simplest form as a string (answer may contain i).
+
+// ### Solution
+
+function pofi(n) {
+  switch (n % 4) {
+    case 0:
+      return "1";
+    case 1:
+      return "i";
+    case 2:
+      return "-1";
+    default:
+      return "-i";
+  }
+}
+
+// ### -------------------- Challenge 18 --------------------
+
+// ### Solution
+
+// ### -------------------- Challenge 19 --------------------
+
+// ### Solution
+
+// ### -------------------- Challenge 20 --------------------
+
 // ### Solution
