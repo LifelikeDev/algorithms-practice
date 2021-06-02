@@ -401,10 +401,71 @@ function pofi(n) {
 }
 
 // ### -------------------- Challenge 18 --------------------
+// You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
+
+// You can assume all values in the array are numbers.
+
+// ### Solution
+function smallEnough(a, limit) {
+  const sorted = a.sort((a, b) => a - b);
+  let boolean;
+
+  for (let i = 0; i < sorted.length; i++) {
+    boolean = sorted[i] > limit ? false : true;
+  }
+
+  return boolean;
+}
+
+//// OR
+function smallEnough(a, limit) {
+  return Math.max(...a) <= limit;
+}
+
+////////    OR
+// smallEnough = (a, l) => a.every((e) => e <= l);
+
+// // ### -------------------- Challenge 19 --------------------
+// The marketing team is spending way too much time typing in hashtags.
+// Let's help them with our own Hashtag Generator!
+
+// Here's the deal:
+
+// It must start with a hashtag (#).
+// All words must have their first letter capitalized.
+// If the final result is longer than 140 chars it must return false.
+// If the input or the result is an empty string it must return false.
+// Examples
+// " Hello there thanks for trying my Kata"  =>  "#HelloThereThanksForTryingMyKata"
+// "    Hello     World   "                  =>  "#HelloWorld"
+// ""                                        =>  false
 
 // ### Solution
 
-// ### -------------------- Challenge 19 --------------------
+// ### -------------------- Challenge 20 --------------------
+function generateHashtag(str) {
+  if (str.trim() === "") return false;
+
+  const newString = str
+    .split(" ")
+    .map((st) => st.charAt(0).toUpperCase() + st.slice(1))
+    .join("");
+
+  const hashTagged = `#${newString.trim()}`;
+
+  return hashTagged.length > 140 ? false : hashTagged;
+}
+// ### Solution
+
+// ### -------------------- Challenge 20 --------------------
+
+// ### Solution
+
+// ### -------------------- Challenge 20 --------------------
+
+// ### Solution
+
+// ### -------------------- Challenge 20 --------------------
 
 // ### Solution
 

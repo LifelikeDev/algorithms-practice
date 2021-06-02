@@ -64,13 +64,69 @@ const sortedSquares = function (nums) {
 };
 
 // --------------- Challenge 4 -----------------
+/* Given a fixed length array arr of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.
+
+Note that elements beyond the length of the original array are not written.
+
+Do the above modifications to the input array in place, do not return anything from your function. */
+
+/* Input: [1,0,2,3,0,4,5,0]
+Output: null
+Explanation: After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4] */
 
 // ---- Solution ----
+function duplicateZeros(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      arr.length = arr.length - 1;
+      arr.splice(i, 0, 0);
+      i++;
+    }
+  }
+  return arr;
+}
 
 // --------------- Challenge 5 -----------------
+// You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+// Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+
+// The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+// Example 1:
+
+// Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+// Output: [1,2,2,3,5,6]
+// Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+// The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+// ---- Solution ----
+function merge(nums1, m, nums2, n) {
+  // m represents the number of elements in nums1 that has to be merged with n
+  // n represents the available space in nums1 that has to filled with nums2; also represents the length of nums2
+
+  // splice nums1, begin writing from index m, deleting n number of elements while spreading the array nums2 in nums1
+  nums1.splice(m, n, ...nums2);
+  // sort the array into ascending order
+  nums1.sort((a, b) => a - b);
+}
+
+// --------------- Challenge 6 -----------------
 
 // ---- Solution ----
 
-// --------------- Challenge 6 -----------------
+// --------------- Challenge 7 -----------------
+
+// ---- Solution ----
+
+// --------------- Challenge 8 -----------------
+
+// ---- Solution ----
+
+// --------------- Challenge 9 -----------------
+
+// ---- Solution ----
+
+// --------------- Challenge 10 -----------------
 
 // ---- Solution ----
