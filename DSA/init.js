@@ -48,7 +48,7 @@ const intersection = (one, two) => {
   const setFromOne = new Set(one);
 
   // filter set two to get matching elements with one, and make a new Set out of it
-  const filteredElements = new Set(two.filter((tw) => setFromOne.has(tw)));
+  const filteredElements = new Set(two.filter((el) => setFromOne.has(el)));
 
   // return an array of matching elements
   return [...filteredElements];
