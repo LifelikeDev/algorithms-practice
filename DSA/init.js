@@ -148,8 +148,6 @@ function truncateString(str, num) {
   }
 }
 
-// Create a function that looks through an array arr and returns the first element in it that passes a 'truth test'. This means that given an element x, the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined.
-
 // findElement([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; }) should return 8.
 
 // findElement([1, 3, 5, 9], function(num) { return num % 2 === 0; }) should return undefined.
@@ -179,3 +177,235 @@ function findElement(arr, func) {
 function booWho(bool) {
   return typeof bool === "boolean";
 }
+
+// You are given a string that contains alphabetical characters (a - z, A - Z) and some other characters ($, !, etc.). For example, one input may be:
+
+// 'sea!$hells3'
+
+// Can you reverse only the alphabetical ones?
+
+function reverseOnlyAlphabets(str) {
+  const splitStr = str.split("");
+  const alphabets = [];
+
+  // loop through the splitStr array
+  // push all the alphabets in it to the alphabets array
+  for (let char of splitStr) {
+    if (/[a-zA-Z]/.test(char)) {
+      alphabets.push(char);
+    }
+  }
+
+  // have a list of reversed alphabets in an array
+  // pass the alphabets array into a function that will reverse it
+  const reversedAlphabets = reverseAnArray(alphabets);
+
+  let reversedArrayIndex = 0;
+
+  for (let i = 0; i < splitStr.length; i++) {
+    if (/[a-zA-Z]/.test(splitStr[i])) {
+      splitStr[i] = reversedAlphabets[reversedArrayIndex++];
+    }
+  }
+
+  return splitStr.join("");
+}
+
+// function to reverse a given array by swapping
+function reverseAnArray(arr) {
+  let start = 0;
+  let end = arr.length - 1;
+
+  while (start <= end) {
+    let temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+
+    start++;
+    end--;
+  }
+
+  return arr;
+}
+
+// console.log(reverseOnlyAlphabets("ab@#dcee@hide$5"));
+
+// Title Case a Sentence
+// Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+
+// For the purpose of this exercise, you should also capitalize connecting words like the and of.
+
+// titleCase("I'm a little tea pot") should return a string.
+
+// titleCase("I'm a little tea pot") should return the string I'm A Little Tea Pot.
+
+// titleCase("sHoRt AnD sToUt") should return the string Short And Stout.
+
+// titleCase("HERE IS MY HANDLE HERE IS MY SPOUT") should return the string Here Is My Handle Here Is My Spout.
+
+function titleCase(str) {
+  // capitalize each starting letter of a word in str
+  // split str to array by spaces
+  // run a for loop
+  // capitalize the first letter
+  // lowercase - ize the remaining letters of the array
+
+  const splitStr = str.split(" ");
+  const newArr = [];
+
+  for (let i = 0; i < splitStr.length; i++) {
+    let currWord = splitStr[i];
+    let modWord =
+      currWord.substr(0, 1).toUpperCase() + currWord.substr(1).toLowerCase();
+    newArr.push(modWord);
+  }
+
+  return newArr.join(" ");
+}
+
+// Slice and Splice
+// You are given two arrays and an index.
+
+// Copy each element of the first array into the second array, in order.
+
+// Begin inserting elements at index n of the second array.
+
+// Return the resulting array. The input arrays should remain the same after the function runs.
+
+// frankenSplice([1, 2, 3], [4, 5], 1) should return [4, 1, 2, 3, 5].
+
+// frankenSplice([1, 2], ["a", "b"], 1) should return ["a", 1, 2, "b"].
+
+// frankenSplice(["claw", "tentacle"], ["head", "shoulders", "knees", "toes"], 2) should return ["head", "shoulders", "claw", "tentacle", "knees", "toes"].
+
+// All elements from the first array should be added to the second array in their original order.
+
+function frankenSplice(arr1, arr2, n) {
+  // spread the elements of arr2 into an array
+  // use splice method to add the elements of arr1 at index
+  // n of arr2
+  // NOTE: slice method returns a new array of the altered
+  // one
+  // be sure to return the old array
+  const formerArr = [...arr2];
+  const newArr = formerArr.splice(n, 0, ...arr1);
+  console.log(newArr);
+  return formerArr;
+}
+
+// Where do I Belong
+// Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+// For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+
+// Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
+
+// getIndexToIns([10, 20, 30, 40, 50], 35) should return 3.
+
+// getIndexToIns([10, 20, 30, 40, 50], 30) should return 2.
+
+// getIndexToIns([40, 60], 50) should return 1.
+
+// getIndexToIns([3, 10, 5], 3) should return 0.
+
+// getIndexToIns([5, 3, 20, 3], 5) should return 2
+
+function getIndexToIns(arr, num) {
+  const sorted = arr.sort((a, b) => a - b);
+  let index = 0;
+
+  for (let i = 0; i < sorted.length; i++) {
+    if (num === sorted[i] || num === sorted[i + 1]) {
+      index = i;
+    } else if (num > sorted[i] && num < sorted[i + 1]) {
+      index = i + 1;
+    } else if (num > sorted[i]) {
+      index = i + 1;
+    }
+  }
+
+  return index;
+}
+
+// OR
+
+function getIndexToIns(arr, num) {
+  arr.sort((a, b) => a - b);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= num) return i;
+  }
+
+  return arr.length;
+}
+
+// Is An Anagram
+// Here's the definition of an anagram: a word, phrase, or name formed by rearranging the letters of another: such as cinema, formed from iceman.
+
+// We are given two strings like "cinema" and "iceman" as inputs. Can you write a method isAnagram(str1, str2) that will return true or false depending on whether the strings are anagrams of each other?
+
+function isAnAnagram(str1, str2) {
+  const newStr1 = str1.toLowerCase().split("").sort().join("");
+  const newStr2 = str2.toLowerCase().split("").sort().join("");
+
+  return newStr1 === newStr2;
+}
+
+// Validate Palindrome
+// Given a string str, can you write a method that will return True if is a palindrome and False if it is not? If you'll recall, a palindrome is defined as "a word, phrase, or sequence that reads the same backward as forward". For now, assume that we will not have input strings that contain special characters or spaces, so the following examples hold:
+
+// let str = 'thisisnotapalindrome';
+// isPalindrome(str);
+// // false
+
+// str = 'racecar';
+// isPalindrome(str);
+// // true
+// For an extra challenge, try to ignore non-alphanumerical characters. The final solution that we present will handle all edge cases.
+
+function isPalindrome(str) {
+  if (!str || str === "") {
+    return false;
+  } else {
+    let start = 0;
+    let end = str.length - 1;
+    let startChar;
+    let endChar;
+
+    while (start < end) {
+      startChar = str.charAt(start).toLowerCase();
+      endChar = str.charAt(end).toLowerCase();
+
+      if (isAlphanumeric(startChar) && isAlphanumeric(endChar)) {
+        // check if both starting and ending characters are true or not
+        if (startChar == endChar) {
+          start++;
+          end--;
+        } else {
+          return false;
+        }
+      } else {
+        // move to the next character if the current character is not alphanumeric
+        if (!isAlphanumeric(startChar)) {
+          start++;
+        }
+        if (!isAlphanumeric(endChar)) {
+          end--;
+        }
+      }
+    }
+
+    return true;
+  }
+}
+
+function isAlphanumeric(char) {
+  // check if char is not alphanumeric
+  if (/[^a-zA-Z0-9]/.test(char)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+console.log(isPalindrome("Where we are Era ew erehw"));
